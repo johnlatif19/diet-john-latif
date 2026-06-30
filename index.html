@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>خطة 3 أيام للتخلص من احتباس الماء</title>
-  <!-- Font & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
   <style>
-    /* ----- CSS reset & base ----- */
     * {
       margin: 0;
       padding: 0;
@@ -48,7 +46,6 @@
       --text-light: #94a3b8;
       --border: rgba(255, 255, 255, 0.05);
     }
-    /* floating blobs */
     .blob {
       position: fixed;
       border-radius: 50%;
@@ -68,7 +65,6 @@
       position: relative;
       z-index: 2;
     }
-    /* glassmorphism cards */
     .card {
       background: var(--card);
       backdrop-filter: blur(6px);
@@ -114,13 +110,9 @@
     button.small { padding: 6px 14px; font-size: 0.8rem; }
     .flex { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 16px; }
     .text-muted { color: var(--text-light); font-size: 0.9rem; }
-    .text-center { text-align: center; }
     .mt-2 { margin-top: 18px; }
     .mb-1 { margin-bottom: 10px; }
-    .gap-1 { gap: 8px; }
-    /* hero */
     .hero {
       padding: 28px 0 10px;
       position: relative;
@@ -137,7 +129,6 @@
     .hero svg { max-width: 180px; width: 100%; height: auto; }
     .dashboard-stats { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: space-between; }
     .stat-item { background: var(--glass); padding: 6px 16px; border-radius: 50px; backdrop-filter: blur(4px); font-weight: 500; }
-    /* progress circle */
     .circle-wrap {
       display: flex;
       align-items: center;
@@ -161,7 +152,6 @@
       font-weight: 700;
       font-size: 1.5rem;
     }
-    /* meal card */
     .meal-card {
       background: var(--card);
       backdrop-filter: blur(4px);
@@ -197,7 +187,6 @@
     .food-tag.green { background: #e6f7e6; color: #166534; }
     .dark .food-tag.red { background: #3b1e1e; color: #fca5a5; }
     .dark .food-tag.green { background: #1a3a1a; color: #86efac; }
-    /* water bottle */
     .bottle {
       width: 70px;
       height: 130px;
@@ -232,7 +221,6 @@
       transition: width 0.5s ease;
       width: 0%;
     }
-    /* toast */
     .toast-container {
       position: fixed;
       bottom: 100px;
@@ -261,7 +249,6 @@
       text-align: center;
     }
     @keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-    /* bottom nav */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -291,8 +278,6 @@
       font-weight: 500;
     }
     .nav-item.active { color: var(--primary); background: var(--glass); }
-    .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
-    /* responsive */
     @media (max-width: 640px) {
       .grid-2 { grid-template-columns: 1fr; }
       .hero h1 { font-size: 1.8rem; }
@@ -303,34 +288,8 @@
       .bottom-nav { display: none; }
       body { padding-bottom: 0; }
     }
-    /* utils */
-    .hidden { display: none !important; }
-    .ripple {
-      position: relative;
-      overflow: hidden;
-    }
-    .ripple::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      width: 100%;
-      padding-top: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%) scale(0);
-      opacity: 0;
-      pointer-events: none;
-    }
-    .ripple:active::after {
-      animation: rippleAnim 0.5s ease-out;
-    }
-    @keyframes rippleAnim {
-      to { transform: translate(-50%,-50%) scale(2.5); opacity: 1; }
-    }
     .fade-in { animation: fadeIn 0.4s ease; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
-    /* badge / achievement */
     .badge {
       display: inline-block;
       background: var(--accent);
@@ -342,15 +301,41 @@
       margin: 4px 4px 0 0;
     }
     .badge.unlocked { background: var(--primary); color: white; }
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .rule-item {
+      background: var(--glass);
+      padding: 10px 14px;
+      border-radius: 50px;
+      text-align: center;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border);
+    }
+    .day-section {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      border-right: 4px solid var(--primary);
+    }
+    .day-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
   </style>
 </head>
 <body>
-  <!-- floating blobs -->
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
 
   <div class="container" id="app">
-    <!-- hero -->
+    <!-- Hero -->
     <div class="hero flex" style="justify-content:space-between;">
       <div>
         <h1>خطة 3 أيام<br/>للتخلص من احتباس الماء</h1>
@@ -365,7 +350,7 @@
       </svg>
     </div>
 
-    <!-- dashboard quick stats -->
+    <!-- Dashboard -->
     <div class="card card-glass mb-1" id="dashboard">
       <div class="dashboard-stats">
         <span class="stat-item">📅 اليوم <span id="currentDay">1</span></span>
@@ -382,13 +367,25 @@
       </div>
     </div>
 
-    <!-- 3-day plan -->
+    <!-- 3-Day Plan -->
     <section id="plan">
       <h2 style="font-weight:600; font-size:1.4rem; margin:20px 0 12px;">📋 خطة 3 أيام</h2>
-      <div id="mealContainer" class="grid-2"></div>
+      <div id="mealContainer"></div>
     </section>
 
-    <!-- water & walking -->
+    <!-- Quick Rules -->
+    <div class="card mt-2">
+      <h4>💧 قواعد بسيطة</h4>
+      <div class="rules-grid">
+        <div class="rule-item">🚰 2.5 - 3 لتر ماء</div>
+        <div class="rule-item">🧂 قلل الملح</div>
+        <div class="rule-item">🚫 ممنوع المخللات</div>
+        <div class="rule-item">🚫 ممنوع المقليات</div>
+        <div class="rule-item">🚶 20-30 د مشي</div>
+      </div>
+    </div>
+
+    <!-- Water & Walking -->
     <div class="grid-2 mt-2">
       <div class="card">
         <h3>💧 الماء <span class="text-muted" style="font-weight:400;">2.5 لتر</span></h3>
@@ -412,13 +409,13 @@
       </div>
     </div>
 
-    <!-- foods to avoid / recommended -->
+    <!-- Foods -->
     <div class="grid-2 mt-2">
       <div class="card"><h4>🚫 تجنب</h4><div id="avoidList" class="flex"></div></div>
       <div class="card"><h4>✅ موصى به</h4><div id="recommendList" class="flex"></div></div>
     </div>
 
-    <!-- daily tip & stats -->
+    <!-- Tip & Stats -->
     <div class="grid-2 mt-2">
       <div class="card"><h4>💡 نصيحة اليوم</h4><p id="dailyTip" class="text-muted">✨ قلل من تناول الملح.</p></div>
       <div class="card"><h4>📊 الإحصائيات</h4>
@@ -429,10 +426,10 @@
       </div>
     </div>
 
-    <!-- achievements -->
+    <!-- Achievements -->
     <div class="card mt-2"><h4>🏆 الإنجازات</h4><div id="achievementList" class="flex"></div></div>
 
-    <!-- settings -->
+    <!-- Settings -->
     <div class="card mt-2">
       <div class="flex" style="justify-content:space-between;">
         <span><strong>⚙️ الإعدادات</strong></span>
@@ -445,41 +442,41 @@
     <div style="height:20px;"></div>
   </div>
 
-  <!-- bottom nav -->
+  <!-- Bottom Nav -->
   <nav class="bottom-nav" id="bottomNav">
     <button class="nav-item active" data-section="plan">📋 الخطة</button>
     <button class="nav-item" data-section="dashboard">📊 لوحة التحكم</button>
     <button class="nav-item" id="scrollTop">⬆ للأعلى</button>
   </nav>
 
-  <!-- toast container -->
+  <!-- Toast -->
   <div class="toast-container" id="toastContainer"></div>
 
   <script>
     (function(){
       "use strict";
 
-      // ----- DATA -----
+      // ----- NEW MEAL PLAN (2 meals + snack per day) -----
       const mealPlan = [
-        { day:1, meal:'الإفطار', items:['بيضتان مسلوقتان','خيار','خس'] },
-        { day:1, meal:'الغداء', items:['دجاج مشوي','سلطة كبيرة'] },
-        { day:1, meal:'العشاء', items:['زبادي','خيار'] },
-        { day:1, meal:'سناكس', items:['تين برشمومي'] },
-        { day:2, meal:'الإفطار', items:['زبادي','خيار'] },
-        { day:2, meal:'الغداء', items:['سمك مشوي','سلطة'] },
-        { day:2, meal:'العشاء', items:['بيض مسلوق','خس'] },
-        { day:2, meal:'سناكس', items:['تفاح اخضر'] },
-        { day:3, meal:'الإفطار', items:['كمية صغيرة من الفول','سلطة'] },
-        { day:3, meal:'الغداء', items:['لحم مشوي','سلطة'] },
-        { day:3, meal:'العشاء', items:['تونة','خيار'] },
-        { day:3, meal:'سناكس', items:['تفاح اخضر'] }
+        { day:1, meal:'🍳 الفطار', items:['2 بيضة مسلوقة','خيار','خس'] },
+        { day:1, meal:'🍎 السناك', items:['تفاحة واحدة'] },
+        { day:1, meal:'🌙 العشاء', items:['دجاج مشوي','سلطة كبيرة (خس + خيار + جرجير)'] },
+
+        { day:2, meal:'🍳 الفطار', items:['2 بيضة مسلوقة','خيار'] },
+        { day:2, meal:'🍎 السناك', items:['تفاحة واحدة'] },
+        { day:2, meal:'🌙 العشاء', items:['سمك مشوي','سلطة كبيرة'] },
+
+        { day:3, meal:'🍳 الفطار', items:['2 بيضة مسلوقة','خس'] },
+        { day:3, meal:'🍎 السناك', items:['تفاحة واحدة'] },
+        { day:3, meal:'🌙 العشاء', items:['لحم مشوي أو تونة','سلطة كبيرة'] }
       ];
+
       const avoid = ['المخللات','رقائق البطاطس','الوجبات السريعة','المشروبات الغازية','الحلوى','الكثير من الخبز','الكثير من الأرز','الكثير من المعكرونة','الأطعمة عالية الصوديوم'];
-      const recommend = ['الدجاج','السمك','البيض','الزبادي','الخيار','الخس','الجرجير','الجزر','التفاح','البرتقال','الكثير من الماء'];
+      const recommend = ['الدجاج','السمك','البيض','الخيار','الخس','الجرجير','الجزر','التفاح','البرتقال','الكثير من الماء'];
       const tips = ['قلل من تناول الملح.','امشِ كل يوم.','نم جيداً.','اشرب الماء باستمرار.','تجنب الأطعمة المصنعة.','تناول المزيد من البوتاسيوم.','اقرأ ملصقات التغذية.'];
       const achievementsDef = [
         { id:'firstMeal', label:'أول وجبة', check: s => s.completedMeals >=1 },
-        { id:'halfDay', label:'نصف اليوم', check: s => s.completedMeals >=4 },
+        { id:'halfDay', label:'نصف اليوم', check: s => s.completedMeals >=3 },
         { id:'finishedDay', label:'يوم كامل', check: s => s.completedMeals >=6 },
         { id:'perfectHydration', label:'ترطيب مثالي', check: s => s.water >= 2500 },
         { id:'all3Days', label:'إكمال 3 أيام', check: s => s.completedMeals >=9 }
@@ -494,7 +491,6 @@
         achievements: {}
       };
 
-      // load from localStorage
       function loadState() {
         try {
           const raw = localStorage.getItem('retentionState');
@@ -551,6 +547,7 @@
         if (c >= 3) return 2;
         return 1;
       }
+
       function updateUI() {
         const done = getCompletedCount();
         const total = mealPlan.length;
@@ -564,33 +561,24 @@
         const circumference = 263.89;
         progressCircle.style.strokeDashoffset = circumference - (pct/100)*circumference;
 
-        // water
         const waterPct = Math.min(100, (state.water/2500)*100);
         bottleFill.style.height = waterPct+'%';
         waterStatus.textContent = state.water+' مل';
 
-        // walk
         const walkPct = Math.min(100, (state.walking/30)*100);
         walkFill.style.width = walkPct+'%';
         walkStatus.textContent = state.walking+' د';
 
-        // stats
         statMeals.textContent = done;
         statWater.textContent = Math.min(100, Math.round((state.water/2500)*100));
         statWalk.textContent = Math.min(100, Math.round((state.walking/30)*100));
         statStreak.textContent = done >= 3 ? '🔥' : '0';
 
-        // achievements
         updateAchievements();
-
-        // daily tip (based on day)
         const tipIdx = (getDay()-1) % tips.length;
         dailyTip.textContent = '✨ '+tips[tipIdx];
 
-        // render meals
         renderMeals();
-
-        // dark mode
         document.body.classList.toggle('dark', state.dark);
         darkToggle.textContent = state.dark ? '☀️ فاتح' : '🌙 داكن';
         saveState();
@@ -598,27 +586,32 @@
 
       function renderMeals() {
         let html = '';
-        mealPlan.forEach((m, idx) => {
-          const done = state.completedMeals[idx];
-          const dayLabel = `اليوم ${m.day}`;
-          const items = m.items.map(i => `<span class="food-tag">${i}</span>`).join('');
-          html += `
-            <div class="meal-card ${done?'done':''} fade-in" style="animation-delay:${idx*0.03}s" data-idx="${idx}">
-              <div>
-                <span class="meal-badge">${dayLabel}</span>
-                <span class="meal-name" style="font-weight:600;display:block;">${m.meal}</span>
-                <div style="margin-top:4px;">${items}</div>
+        // Group by day
+        const days = [1,2,3];
+        days.forEach(day => {
+          const dayMeals = mealPlan.filter((m, idx) => m.day === day);
+          html += `<div class="day-section"><h3>📅 اليوم ${day}</h3>`;
+          dayMeals.forEach((m, idx) => {
+            const realIdx = mealPlan.indexOf(m);
+            const done = state.completedMeals[realIdx];
+            const items = m.items.map(i => `<span class="food-tag">${i}</span>`).join('');
+            html += `
+              <div class="meal-card ${done?'done':''} fade-in" style="margin-bottom:8px;" data-idx="${realIdx}">
+                <div>
+                  <span class="meal-badge">${m.meal}</span>
+                  <div style="margin-top:4px;">${items}</div>
+                </div>
+                <div>
+                  <button class="small ${done?'outline':'primary'}" data-toggle="${realIdx}">${done?'✅ تم':'✔ تم'}</button>
+                </div>
               </div>
-              <div>
-                <button class="small ${done?'outline':'primary'}" data-toggle="${idx}">${done?'✅ تم':'✔ تم'}</button>
-              </div>
-            </div>
-          `;
+            `;
+          });
+          html += `</div>`;
         });
         mealContainer.innerHTML = html;
-        // attach events
         $$('[data-toggle]').forEach(btn => {
-          btn.addEventListener('click', function(e) {
+          btn.addEventListener('click', function() {
             const idx = parseInt(this.dataset.toggle);
             toggleMeal(idx);
           });
@@ -627,24 +620,22 @@
 
       function toggleMeal(idx) {
         if (state.completedMeals[idx]) {
-          // uncheck not allowed? we allow
           state.completedMeals[idx] = !state.completedMeals[idx];
         } else {
           state.completedMeals[idx] = true;
           showToast('✅ تم إكمال الوجبة!');
           checkAchievements();
-          if (getCompletedCount() === 9) showToast('🎉 تم إكمال الأيام الثلاثة!');
-          else if (getCompletedCount() === 6) showToast('🌟 تم إكمال اليوم الثالث!');
-          else if (getCompletedCount() === 3) showToast('🌟 تم إكمال اليوم الثاني!');
-          // confetti simple
-          if (getCompletedCount() % 3 === 0) simpleConfetti();
+          const done = getCompletedCount();
+          if (done === 9) showToast('🎉 تم إكمال الأيام الثلاثة!');
+          else if (done === 6) showToast('🌟 تم إكمال اليوم الثالث!');
+          else if (done === 3) showToast('🌟 تم إكمال اليوم الثاني!');
+          if (done % 3 === 0) simpleConfetti();
         }
         updateUI();
         saveState();
       }
 
       function checkAchievements() {
-        const done = getCompletedCount();
         achievementsDef.forEach(a => {
           if (!state.achievements[a.id] && a.check(state)) {
             state.achievements[a.id] = true;
@@ -663,7 +654,6 @@
         achievementList.innerHTML = html;
       }
 
-      // ----- water / walk -----
       function addWater(ml) {
         state.water = Math.min(2500, state.water + ml);
         if (state.water >= 2500) showToast('💧 ترطيب مثالي!');
@@ -675,7 +665,6 @@
         updateUI(); saveState();
       }
 
-      // ----- toast -----
       function showToast(msg) {
         const t = document.createElement('div');
         t.className = 'toast';
@@ -684,7 +673,6 @@
         setTimeout(() => { t.remove(); }, 3000);
       }
 
-      // ----- confetti (simple) -----
       function simpleConfetti() {
         for (let i=0;i<40;i++) {
           const el = document.createElement('div');
@@ -698,7 +686,6 @@
         }
       }
 
-      // ----- reset / export / import -----
       function resetAll() {
         if (confirm('هل تريد إعادة تعيين كل التقدم؟')) {
           state.completedMeals = new Array(mealPlan.length).fill(false);
@@ -745,9 +732,7 @@
         input.click();
       }
 
-      // ----- event binding -----
       function init() {
-        // water buttons
         document.querySelectorAll('[data-water]').forEach(btn => {
           btn.addEventListener('click', function() { addWater(parseInt(this.dataset.water)); });
         });
@@ -765,7 +750,6 @@
         exportBtn.addEventListener('click', exportData);
         importBtn.addEventListener('click', importData);
 
-        // bottom nav
         $$('.nav-item').forEach(item => {
           item.addEventListener('click', function() {
             const section = this.dataset.section;
@@ -778,17 +762,13 @@
         });
         $('#scrollTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 
-        // initial render
         updateUI();
-        // fill avoid/recommend
         avoid.forEach(a => { const el = document.createElement('span'); el.className='food-tag red'; el.textContent=a; avoidList.appendChild(el); });
         recommend.forEach(r => { const el = document.createElement('span'); el.className='food-tag green'; el.textContent=r; recommendList.appendChild(el); });
 
-        // keyboard shortcut
         document.addEventListener('keydown', e => { if (e.key === 'd' || e.key === 'D') { darkToggle.click(); } });
       }
 
-      // run
       init();
     })();
   </script>
