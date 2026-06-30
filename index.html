@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>3‑Day Water Retention Recovery</title>
+  <title>خطة 3 أيام للتخلص من احتباس الماء</title>
   <!-- Font & Icons (only system-friendly) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -174,7 +174,7 @@
       justify-content: space-between;
       gap: 10px;
     }
-    .meal-card.done { opacity: 0.6; border-left: 5px solid var(--primary); }
+    .meal-card.done { opacity: 0.6; border-right: 5px solid var(--primary); }
     .meal-card.done .meal-name { text-decoration: line-through; }
     .meal-badge {
       display: inline-block;
@@ -353,8 +353,8 @@
     <!-- hero -->
     <div class="hero flex" style="justify-content:space-between;">
       <div>
-        <h1>3‑Day Water<br/>Retention Recovery</h1>
-        <p class="text-muted" style="max-width:300px;">Reduce fluid retention with healthy eating, hydration & activity.</p>
+        <h1>خطة 3 أيام<br/>للتخلص من احتباس الماء</h1>
+        <p class="text-muted" style="max-width:300px;">خطة غذائية بسيطة لتقليل احتباس السوائل مع الأكل الصحي والترطيب والنشاط اليومي.</p>
       </div>
       <svg viewBox="0 0 100 100" width="120" height="120">
         <circle cx="50" cy="50" r="40" fill="#4CAF50" opacity="0.15" />
@@ -368,78 +368,78 @@
     <!-- dashboard quick stats -->
     <div class="card card-glass mb-1" id="dashboard">
       <div class="dashboard-stats">
-        <span class="stat-item">📅 Day <span id="currentDay">1</span></span>
+        <span class="stat-item">📅 اليوم <span id="currentDay">1</span></span>
         <span class="stat-item">✅ <span id="completionPercent">0</span>%</span>
-        <span class="stat-item">💧 <span id="waterDisplay">0</span>ml</span>
-        <span class="stat-item">🚶 <span id="walkDisplay">0</span>min</span>
+        <span class="stat-item">💧 <span id="waterDisplay">0</span>مل</span>
+        <span class="stat-item">🚶 <span id="walkDisplay">0</span>د</span>
       </div>
       <div class="circle-wrap mt-2">
         <div class="circle">
           <svg><circle class="bg" cx="50" cy="50" r="42"/><circle class="progress" id="progressCircle" cx="50" cy="50" r="42" stroke-dasharray="263.89" stroke-dashoffset="263.89"/></svg>
           <div class="label" id="progressLabel">0%</div>
         </div>
-        <div><span class="text-muted">completed meals</span><br/><span id="mealCount">0/9</span></div>
+        <div><span class="text-muted">الوجبات المكتملة</span><br/><span id="mealCount">0/9</span></div>
       </div>
     </div>
 
     <!-- 3-day plan -->
     <section id="plan">
-      <h2 style="font-weight:600; font-size:1.4rem; margin:20px 0 12px;">📋 3‑Day Plan</h2>
+      <h2 style="font-weight:600; font-size:1.4rem; margin:20px 0 12px;">📋 خطة 3 أيام</h2>
       <div id="mealContainer" class="grid-2"></div>
     </section>
 
     <!-- water & walking -->
     <div class="grid-2 mt-2">
       <div class="card">
-        <h3>💧 Water <span class="text-muted" style="font-weight:400;">2.5L</span></h3>
+        <h3>💧 الماء <span class="text-muted" style="font-weight:400;">2.5 لتر</span></h3>
         <div class="bottle" id="bottle"><div class="bottle-fill" id="bottleFill"></div></div>
         <div class="flex" style="justify-content:center;margin:12px 0;">
-          <button class="small secondary" data-water="250">+250ml</button>
-          <button class="small secondary" data-water="500">+500ml</button>
+          <button class="small secondary" data-water="250">+250مل</button>
+          <button class="small secondary" data-water="500">+500مل</button>
           <button class="small danger" id="resetWater">↺</button>
         </div>
-        <span id="waterStatus" class="text-muted">0 ml</span>
+        <span id="waterStatus" class="text-muted">0 مل</span>
       </div>
       <div class="card">
-        <h3>🚶 Walking <span class="text-muted" style="font-weight:400;">30min</span></h3>
+        <h3>🚶 المشي <span class="text-muted" style="font-weight:400;">30 د</span></h3>
         <div class="walk-bar"><div class="walk-fill" id="walkFill"></div></div>
         <div class="flex" style="justify-content:center;margin:12px 0;">
-          <button class="small accent" data-walk="5">+5min</button>
-          <button class="small accent" data-walk="10">+10min</button>
+          <button class="small accent" data-walk="5">+5د</button>
+          <button class="small accent" data-walk="10">+10د</button>
           <button class="small danger" id="resetWalk">↺</button>
         </div>
-        <span id="walkStatus" class="text-muted">0 min</span>
+        <span id="walkStatus" class="text-muted">0 د</span>
       </div>
     </div>
 
     <!-- foods to avoid / recommended -->
     <div class="grid-2 mt-2">
-      <div class="card"><h4>🚫 Avoid</h4><div id="avoidList" class="flex"></div></div>
-      <div class="card"><h4>✅ Recommended</h4><div id="recommendList" class="flex"></div></div>
+      <div class="card"><h4>🚫 تجنب</h4><div id="avoidList" class="flex"></div></div>
+      <div class="card"><h4>✅ موصى به</h4><div id="recommendList" class="flex"></div></div>
     </div>
 
     <!-- daily tip & stats -->
     <div class="grid-2 mt-2">
-      <div class="card"><h4>💡 Daily Tip</h4><p id="dailyTip" class="text-muted">✨ Reduce salt intake.</p></div>
-      <div class="card"><h4>📊 Stats</h4>
-        <div>Meals: <span id="statMeals">0</span>/9</div>
-        <div>Water: <span id="statWater">0</span>%</div>
-        <div>Walking: <span id="statWalk">0</span>%</div>
-        <div>Streak: <span id="statStreak">0</span>d</div>
+      <div class="card"><h4>💡 نصيحة اليوم</h4><p id="dailyTip" class="text-muted">✨ قلل من تناول الملح.</p></div>
+      <div class="card"><h4>📊 الإحصائيات</h4>
+        <div>الوجبات: <span id="statMeals">0</span>/9</div>
+        <div>الماء: <span id="statWater">0</span>%</div>
+        <div>المشي: <span id="statWalk">0</span>%</div>
+        <div>التتابع: <span id="statStreak">0</span>يوم</div>
       </div>
     </div>
 
     <!-- achievements -->
-    <div class="card mt-2"><h4>🏆 Achievements</h4><div id="achievementList" class="flex"></div></div>
+    <div class="card mt-2"><h4>🏆 الإنجازات</h4><div id="achievementList" class="flex"></div></div>
 
     <!-- settings -->
     <div class="card mt-2">
       <div class="flex" style="justify-content:space-between;">
-        <span><strong>⚙️ Settings</strong></span>
-        <button class="small outline" id="darkToggle">🌙 Dark</button>
-        <button class="small outline" id="resetProgress">🔄 Reset</button>
-        <button class="small outline" id="exportData">📥 Export</button>
-        <button class="small outline" id="importData">📤 Import</button>
+        <span><strong>⚙️ الإعدادات</strong></span>
+        <button class="small outline" id="darkToggle">🌙 داكن</button>
+        <button class="small outline" id="resetProgress">🔄 إعادة تعيين</button>
+        <button class="small outline" id="exportData">📥 تصدير</button>
+        <button class="small outline" id="importData">📤 استيراد</button>
       </div>
     </div>
     <div style="height:20px;"></div>
@@ -447,9 +447,9 @@
 
   <!-- bottom nav -->
   <nav class="bottom-nav" id="bottomNav">
-    <button class="nav-item active" data-section="plan">📋 Plan</button>
-    <button class="nav-item" data-section="dashboard">📊 Dashboard</button>
-    <button class="nav-item" id="scrollTop">⬆ Top</button>
+    <button class="nav-item active" data-section="plan">📋 الخطة</button>
+    <button class="nav-item" data-section="dashboard">📊 لوحة التحكم</button>
+    <button class="nav-item" id="scrollTop">⬆ للأعلى</button>
   </nav>
 
   <!-- toast container -->
@@ -461,28 +461,28 @@
 
       // ----- DATA -----
       const mealPlan = [
-        { day:1, meal:'Breakfast', items:['2 boiled eggs','cucumber','lettuce'] },
-        { day:1, meal:'Lunch', items:['grilled chicken','large salad'] },
-        { day:1, meal:'Dinner', items:['yogurt','cucumber'] },
-        { day:1, meal:'Snack', items:['apple'] },
-        { day:2, meal:'Breakfast', items:['yogurt','cucumber'] },
-        { day:2, meal:'Lunch', items:['grilled fish','salad'] },
-        { day:2, meal:'Dinner', items:['boiled eggs','lettuce'] },
-        { day:2, meal:'Snack', items:['carrots'] },
-        { day:3, meal:'Breakfast', items:['small amount of fava beans','salad'] },
-        { day:3, meal:'Lunch', items:['grilled meat','salad'] },
-        { day:3, meal:'Dinner', items:['tuna','cucumber'] },
-        { day:3, meal:'Snack', items:['orange'] }
+        { day:1, meal:'الإفطار', items:['بيضتان مسلوقتان','خيار','خس'] },
+        { day:1, meal:'الغداء', items:['دجاج مشوي','سلطة كبيرة'] },
+        { day:1, meal:'العشاء', items:['زبادي','خيار'] },
+        { day:1, meal:'وجبة خفيفة', items:['تفاح'] },
+        { day:2, meal:'الإفطار', items:['زبادي','خيار'] },
+        { day:2, meal:'الغداء', items:['سمك مشوي','سلطة'] },
+        { day:2, meal:'العشاء', items:['بيض مسلوق','خس'] },
+        { day:2, meal:'وجبة خفيفة', items:['جزر'] },
+        { day:3, meal:'الإفطار', items:['كمية صغيرة من الفول','سلطة'] },
+        { day:3, meal:'الغداء', items:['لحم مشوي','سلطة'] },
+        { day:3, meal:'العشاء', items:['تونة','خيار'] },
+        { day:3, meal:'وجبة خفيفة', items:['برتقال'] }
       ];
-      const avoid = ['Pickles','Chips','Fast Food','Soda','Candy','Too much bread','Too much rice','Too much pasta','High sodium foods'];
-      const recommend = ['Chicken','Fish','Eggs','Yogurt','Cucumber','Lettuce','Arugula','Carrots','Apples','Oranges','Plenty of water'];
-      const tips = ['Reduce salt intake.','Walk every day.','Sleep well.','Drink water consistently.','Avoid processed foods.','Eat more potassium.','Read nutrition labels.'];
+      const avoid = ['المخللات','رقائق البطاطس','الوجبات السريعة','المشروبات الغازية','الحلوى','الكثير من الخبز','الكثير من الأرز','الكثير من المعكرونة','الأطعمة عالية الصوديوم'];
+      const recommend = ['الدجاج','السمك','البيض','الزبادي','الخيار','الخس','الجرجير','الجزر','التفاح','البرتقال','الكثير من الماء'];
+      const tips = ['قلل من تناول الملح.','امشِ كل يوم.','نم جيداً.','اشرب الماء باستمرار.','تجنب الأطعمة المصنعة.','تناول المزيد من البوتاسيوم.','اقرأ ملصقات التغذية.'];
       const achievementsDef = [
-        { id:'firstMeal', label:'First Meal', check: s => s.completedMeals >=1 },
-        { id:'halfDay', label:'Half Day', check: s => s.completedMeals >=4 },
-        { id:'finishedDay', label:'Finished Day', check: s => s.completedMeals >=6 },
-        { id:'perfectHydration', label:'Perfect Hydration', check: s => s.water >= 2500 },
-        { id:'all3Days', label:'Completed All 3 Days', check: s => s.completedMeals >=9 }
+        { id:'firstMeal', label:'أول وجبة', check: s => s.completedMeals >=1 },
+        { id:'halfDay', label:'نصف اليوم', check: s => s.completedMeals >=4 },
+        { id:'finishedDay', label:'يوم كامل', check: s => s.completedMeals >=6 },
+        { id:'perfectHydration', label:'ترطيب مثالي', check: s => s.water >= 2500 },
+        { id:'all3Days', label:'إكمال 3 أيام', check: s => s.completedMeals >=9 }
       ];
 
       // ----- STATE -----
@@ -567,12 +567,12 @@
         // water
         const waterPct = Math.min(100, (state.water/2500)*100);
         bottleFill.style.height = waterPct+'%';
-        waterStatus.textContent = state.water+' ml';
+        waterStatus.textContent = state.water+' مل';
 
         // walk
         const walkPct = Math.min(100, (state.walking/30)*100);
         walkFill.style.width = walkPct+'%';
-        walkStatus.textContent = state.walking+' min';
+        walkStatus.textContent = state.walking+' د';
 
         // stats
         statMeals.textContent = done;
@@ -592,7 +592,7 @@
 
         // dark mode
         document.body.classList.toggle('dark', state.dark);
-        darkToggle.textContent = state.dark ? '☀️ Light' : '🌙 Dark';
+        darkToggle.textContent = state.dark ? '☀️ فاتح' : '🌙 داكن';
         saveState();
       }
 
@@ -600,7 +600,7 @@
         let html = '';
         mealPlan.forEach((m, idx) => {
           const done = state.completedMeals[idx];
-          const dayLabel = `Day ${m.day}`;
+          const dayLabel = `اليوم ${m.day}`;
           const items = m.items.map(i => `<span class="food-tag">${i}</span>`).join('');
           html += `
             <div class="meal-card ${done?'done':''} fade-in" style="animation-delay:${idx*0.03}s" data-idx="${idx}">
@@ -610,7 +610,7 @@
                 <div style="margin-top:4px;">${items}</div>
               </div>
               <div>
-                <button class="small ${done?'outline':'primary'}" data-toggle="${idx}">${done?'✅ Done':'✔ Done'}</button>
+                <button class="small ${done?'outline':'primary'}" data-toggle="${idx}">${done?'✅ تم':'✔ تم'}</button>
               </div>
             </div>
           `;
@@ -631,11 +631,11 @@
           state.completedMeals[idx] = !state.completedMeals[idx];
         } else {
           state.completedMeals[idx] = true;
-          showToast('✅ Meal completed!');
+          showToast('✅ تم إكمال الوجبة!');
           checkAchievements();
-          if (getCompletedCount() === 9) showToast('🎉 All 3 days completed!');
-          else if (getCompletedCount() === 6) showToast('🌟 Finished Day 3!');
-          else if (getCompletedCount() === 3) showToast('🌟 Finished Day 2!');
+          if (getCompletedCount() === 9) showToast('🎉 تم إكمال الأيام الثلاثة!');
+          else if (getCompletedCount() === 6) showToast('🌟 تم إكمال اليوم الثالث!');
+          else if (getCompletedCount() === 3) showToast('🌟 تم إكمال اليوم الثاني!');
           // confetti simple
           if (getCompletedCount() % 3 === 0) simpleConfetti();
         }
@@ -648,7 +648,7 @@
         achievementsDef.forEach(a => {
           if (!state.achievements[a.id] && a.check(state)) {
             state.achievements[a.id] = true;
-            showToast('🏆 '+a.label+' unlocked!');
+            showToast('🏆 '+a.label+' تم فتحه!');
           }
         });
         saveState();
@@ -666,12 +666,12 @@
       // ----- water / walk -----
       function addWater(ml) {
         state.water = Math.min(2500, state.water + ml);
-        if (state.water >= 2500) showToast('💧 Perfect Hydration!');
+        if (state.water >= 2500) showToast('💧 ترطيب مثالي!');
         updateUI(); saveState();
       }
       function addWalk(min) {
         state.walking = Math.min(30, state.walking + min);
-        if (state.walking >= 30) showToast('🚶 Walking goal reached!');
+        if (state.walking >= 30) showToast('🚶 تم تحقيق هدف المشي!');
         updateUI(); saveState();
       }
 
@@ -700,13 +700,13 @@
 
       // ----- reset / export / import -----
       function resetAll() {
-        if (confirm('Reset all progress?')) {
+        if (confirm('هل تريد إعادة تعيين كل التقدم؟')) {
           state.completedMeals = new Array(mealPlan.length).fill(false);
           state.water = 0;
           state.walking = 0;
           state.achievements = {};
           updateUI(); saveState();
-          showToast('🔄 Progress reset');
+          showToast('🔄 تم إعادة التعيين');
         }
       }
 
@@ -716,7 +716,7 @@
         a.href = URL.createObjectURL(blob);
         a.download = 'retentionProgress.json';
         a.click();
-        showToast('📥 Exported');
+        showToast('📥 تم التصدير');
       }
 
       function importData() {
@@ -736,9 +736,9 @@
                 state.walking = data.walking;
                 state.achievements = data.achievements || {};
                 updateUI(); saveState();
-                showToast('📤 Imported successfully');
-              } else showToast('❌ Invalid file');
-            } catch(err) { showToast('❌ Error'); }
+                showToast('📤 تم الاستيراد بنجاح');
+              } else showToast('❌ ملف غير صالح');
+            } catch(err) { showToast('❌ خطأ'); }
           };
           reader.readAsText(file);
         };
@@ -754,8 +754,8 @@
         document.querySelectorAll('[data-walk]').forEach(btn => {
           btn.addEventListener('click', function() { addWalk(parseInt(this.dataset.walk)); });
         });
-        $('#resetWater').addEventListener('click', function() { state.water = 0; updateUI(); saveState(); showToast('💧 Water reset'); });
-        $('#resetWalk').addEventListener('click', function() { state.walking = 0; updateUI(); saveState(); showToast('🚶 Walking reset'); });
+        $('#resetWater').addEventListener('click', function() { state.water = 0; updateUI(); saveState(); showToast('💧 تم إعادة تعيين الماء'); });
+        $('#resetWalk').addEventListener('click', function() { state.walking = 0; updateUI(); saveState(); showToast('🚶 تم إعادة تعيين المشي'); });
 
         darkToggle.addEventListener('click', function() {
           state.dark = !state.dark;
