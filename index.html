@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>3‑Day Water Retention Recovery</title>
+  <!-- Font & Icons (only system-friendly) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- CSS reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+    :root {
+      --primary: #4CAF50;
+      --secondary: #2196F3;
+      --accent: #FF9800;
+      --danger: #F44336;
+      --bg: #F8FAFC;
+      --card: rgba(255, 255, 255, 0.65);
+      --glass: rgba(255, 255, 255, 0.4);
+      --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+      --text: #0b1a2e;
+      --text-light: #4b5b6e;
+      --border: rgba(0, 0, 0, 0.04);
+      --radius: 28px;
+      --radius-sm: 16px;
+    }
+    .dark {
+      --bg: #111827;
+      --card: rgba(30, 41, 59, 0.7);
+      --glass: rgba(15, 23, 42, 0.5);
+      --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+      --text: #f1f5f9;
+      --text-light: #94a3b8;
+      --border: rgba(255, 255, 255, 0.05);
+    }
+    /* floating blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+      transition: 0.4s;
+    }
+    .blob-1 { width: 300px; height: 300px; background: #4CAF50; top: -80px; left: -80px; }
+    .blob-2 { width: 400px; height: 400px; background: #2196F3; bottom: -100px; right: -100px; }
+    .dark .blob { opacity: 0.15; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      position: relative;
+      z-index: 2;
+    }
+    /* glassmorphism cards */
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      transition: all 0.2s ease;
+    }
+    .card-glass {
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    button {
+      font-family: inherit;
+      background: var(--primary);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -0.01em;
+    }
+    button:hover { transform: scale(0.97); opacity: 0.9; }
+    button.secondary { background: var(--secondary); box-shadow: 0 4px 12px rgba(33, 150, 243, 0.25); }
+    button.accent { background: var(--accent); box-shadow: 0 4px 12px rgba(255, 152, 0, 0.25); }
+    button.danger { background: var(--danger); box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2); }
+    button.outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      box-shadow: none;
+    }
+    button.small { padding: 6px 14px; font-size: 0.8rem; }
+    .flex { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 16px; }
+    .text-muted { color: var(--text-light); font-size: 0.9rem; }
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 18px; }
+    .mb-1 { margin-bottom: 10px; }
+    .gap-1 { gap: 8px; }
+    /* hero */
+    .hero {
+      padding: 28px 0 10px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero svg { max-width: 180px; width: 100%; height: auto; }
+    .dashboard-stats { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: space-between; }
+    .stat-item { background: var(--glass); padding: 6px 16px; border-radius: 50px; backdrop-filter: blur(4px); font-weight: 500; }
+    /* progress circle */
+    .circle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .circle {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+    .circle svg { transform: rotate(-90deg); width: 100px; height: 100px; }
+    .circle .bg { fill: none; stroke: var(--border); stroke-width: 7; }
+    .circle .progress { fill: none; stroke: var(--primary); stroke-width: 7; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease; }
+    .circle .label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    /* meal card */
+    .meal-card {
+      background: var(--card);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .meal-card.done { opacity: 0.6; border-left: 5px solid var(--primary); }
+    .meal-card.done .meal-name { text-decoration: line-through; }
+    .meal-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 10px;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .food-tag {
+      display: inline-block;
+      background: var(--glass);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      margin: 2px 4px 2px 0;
+    }
+    .food-tag.red { background: #fee9e7; color: #b91c1c; }
+    .food-tag.green { background: #e6f7e6; color: #166534; }
+    .dark .food-tag.red { background: #3b1e1e; color: #fca5a5; }
+    .dark .food-tag.green { background: #1a3a1a; color: #86efac; }
+    /* water bottle */
+    .bottle {
+      width: 70px;
+      height: 130px;
+      background: rgba(33, 150, 243, 0.1);
+      border: 3px solid var(--secondary);
+      border-radius: 20px 20px 12px 12px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .bottle-fill {
+      background: var(--secondary);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      transition: height 0.5s ease;
+      border-radius: 0 0 10px 10px;
+      height: 0%;
+    }
+    .walk-bar {
+      height: 12px;
+      background: var(--border);
+      border-radius: 40px;
+      overflow: hidden;
+      width: 100%;
+    }
+    .walk-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 40px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+    /* toast */
+    .toast-container {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      pointer-events: none;
+      width: 90%;
+      max-width: 400px;
+    }
+    .toast {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      padding: 14px 22px;
+      border-radius: 60px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      font-weight: 500;
+      border: 1px solid var(--border);
+      animation: slideUp 0.3s ease;
+      pointer-events: auto;
+      width: 100%;
+      text-align: center;
+    }
+    @keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    /* bottom nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 12px;
+      z-index: 50;
+      box-shadow: 0 -6px 20px rgba(0,0,0,0.02);
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 30px;
+      transition: 0.2s;
+      background: transparent;
+      border: none;
+      font-weight: 500;
+    }
+    .nav-item.active { color: var(--primary); background: var(--glass); }
+    .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+    /* responsive */
+    @media (max-width: 640px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .container { padding: 12px 14px; }
+      .dashboard-stats { gap: 8px; }
+    }
+    @media (min-width: 768px) {
+      .bottom-nav { display: none; }
+      body { padding-bottom: 0; }
+    }
+    /* utils */
+    .hidden { display: none !important; }
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      width: 100%;
+      padding-top: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) scale(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .ripple:active::after {
+      animation: rippleAnim 0.5s ease-out;
+    }
+    @keyframes rippleAnim {
+      to { transform: translate(-50%,-50%) scale(2.5); opacity: 1; }
+    }
+    .fade-in { animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+    /* badge / achievement */
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #1e1e1e;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      margin: 4px 4px 0 0;
+    }
+    .badge.unlocked { background: var(--primary); color: white; }
+  </style>
+</head>
+<body>
+  <!-- floating blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="container" id="app">
+    <!-- hero -->
+    <div class="hero flex" style="justify-content:space-between;">
+      <div>
+        <h1>3‑Day Water<br/>Retention Recovery</h1>
+        <p class="text-muted" style="max-width:300px;">Reduce fluid retention with healthy eating, hydration & activity.</p>
+      </div>
+      <svg viewBox="0 0 100 100" width="120" height="120">
+        <circle cx="50" cy="50" r="40" fill="#4CAF50" opacity="0.15" />
+        <circle cx="50" cy="50" r="30" fill="#4CAF50" opacity="0.25" />
+        <circle cx="50" cy="50" r="20" fill="#4CAF50" opacity="0.4" />
+        <path d="M50 15 L55 35 L75 40 L60 55 L65 75 L50 65 L35 75 L40 55 L25 40 L45 35 Z" fill="#4CAF50" opacity="0.6" />
+        <circle cx="50" cy="50" r="8" fill="white" />
+      </svg>
+    </div>
+
+    <!-- dashboard quick stats -->
+    <div class="card card-glass mb-1" id="dashboard">
+      <div class="dashboard-stats">
+        <span class="stat-item">📅 Day <span id="currentDay">1</span></span>
+        <span class="stat-item">✅ <span id="completionPercent">0</span>%</span>
+        <span class="stat-item">💧 <span id="waterDisplay">0</span>ml</span>
+        <span class="stat-item">🚶 <span id="walkDisplay">0</span>min</span>
+      </div>
+      <div class="circle-wrap mt-2">
+        <div class="circle">
+          <svg><circle class="bg" cx="50" cy="50" r="42"/><circle class="progress" id="progressCircle" cx="50" cy="50" r="42" stroke-dasharray="263.89" stroke-dashoffset="263.89"/></svg>
+          <div class="label" id="progressLabel">0%</div>
+        </div>
+        <div><span class="text-muted">completed meals</span><br/><span id="mealCount">0/9</span></div>
+      </div>
+    </div>
+
+    <!-- 3-day plan -->
+    <section id="plan">
+      <h2 style="font-weight:600; font-size:1.4rem; margin:20px 0 12px;">📋 3‑Day Plan</h2>
+      <div id="mealContainer" class="grid-2"></div>
+    </section>
+
+    <!-- water & walking -->
+    <div class="grid-2 mt-2">
+      <div class="card">
+        <h3>💧 Water <span class="text-muted" style="font-weight:400;">2.5L</span></h3>
+        <div class="bottle" id="bottle"><div class="bottle-fill" id="bottleFill"></div></div>
+        <div class="flex" style="justify-content:center;margin:12px 0;">
+          <button class="small secondary" data-water="250">+250ml</button>
+          <button class="small secondary" data-water="500">+500ml</button>
+          <button class="small danger" id="resetWater">↺</button>
+        </div>
+        <span id="waterStatus" class="text-muted">0 ml</span>
+      </div>
+      <div class="card">
+        <h3>🚶 Walking <span class="text-muted" style="font-weight:400;">30min</span></h3>
+        <div class="walk-bar"><div class="walk-fill" id="walkFill"></div></div>
+        <div class="flex" style="justify-content:center;margin:12px 0;">
+          <button class="small accent" data-walk="5">+5min</button>
+          <button class="small accent" data-walk="10">+10min</button>
+          <button class="small danger" id="resetWalk">↺</button>
+        </div>
+        <span id="walkStatus" class="text-muted">0 min</span>
+      </div>
+    </div>
+
+    <!-- foods to avoid / recommended -->
+    <div class="grid-2 mt-2">
+      <div class="card"><h4>🚫 Avoid</h4><div id="avoidList" class="flex"></div></div>
+      <div class="card"><h4>✅ Recommended</h4><div id="recommendList" class="flex"></div></div>
+    </div>
+
+    <!-- daily tip & stats -->
+    <div class="grid-2 mt-2">
+      <div class="card"><h4>💡 Daily Tip</h4><p id="dailyTip" class="text-muted">✨ Reduce salt intake.</p></div>
+      <div class="card"><h4>📊 Stats</h4>
+        <div>Meals: <span id="statMeals">0</span>/9</div>
+        <div>Water: <span id="statWater">0</span>%</div>
+        <div>Walking: <span id="statWalk">0</span>%</div>
+        <div>Streak: <span id="statStreak">0</span>d</div>
+      </div>
+    </div>
+
+    <!-- achievements -->
+    <div class="card mt-2"><h4>🏆 Achievements</h4><div id="achievementList" class="flex"></div></div>
+
+    <!-- settings -->
+    <div class="card mt-2">
+      <div class="flex" style="justify-content:space-between;">
+        <span><strong>⚙️ Settings</strong></span>
+        <button class="small outline" id="darkToggle">🌙 Dark</button>
+        <button class="small outline" id="resetProgress">🔄 Reset</button>
+        <button class="small outline" id="exportData">📥 Export</button>
+        <button class="small outline" id="importData">📤 Import</button>
+      </div>
+    </div>
+    <div style="height:20px;"></div>
+  </div>
+
+  <!-- bottom nav -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-item active" data-section="plan">📋 Plan</button>
+    <button class="nav-item" data-section="dashboard">📊 Dashboard</button>
+    <button class="nav-item" id="scrollTop">⬆ Top</button>
+  </nav>
+
+  <!-- toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // ----- DATA -----
+      const mealPlan = [
+        { day:1, meal:'Breakfast', items:['2 boiled eggs','cucumber','lettuce'] },
+        { day:1, meal:'Lunch', items:['grilled chicken','large salad'] },
+        { day:1, meal:'Dinner', items:['yogurt','cucumber'] },
+        { day:1, meal:'Snack', items:['apple'] },
+        { day:2, meal:'Breakfast', items:['yogurt','cucumber'] },
+        { day:2, meal:'Lunch', items:['grilled fish','salad'] },
+        { day:2, meal:'Dinner', items:['boiled eggs','lettuce'] },
+        { day:2, meal:'Snack', items:['carrots'] },
+        { day:3, meal:'Breakfast', items:['small amount of fava beans','salad'] },
+        { day:3, meal:'Lunch', items:['grilled meat','salad'] },
+        { day:3, meal:'Dinner', items:['tuna','cucumber'] },
+        { day:3, meal:'Snack', items:['orange'] }
+      ];
+      const avoid = ['Pickles','Chips','Fast Food','Soda','Candy','Too much bread','Too much rice','Too much pasta','High sodium foods'];
+      const recommend = ['Chicken','Fish','Eggs','Yogurt','Cucumber','Lettuce','Arugula','Carrots','Apples','Oranges','Plenty of water'];
+      const tips = ['Reduce salt intake.','Walk every day.','Sleep well.','Drink water consistently.','Avoid processed foods.','Eat more potassium.','Read nutrition labels.'];
+      const achievementsDef = [
+        { id:'firstMeal', label:'First Meal', check: s => s.completedMeals >=1 },
+        { id:'halfDay', label:'Half Day', check: s => s.completedMeals >=4 },
+        { id:'finishedDay', label:'Finished Day', check: s => s.completedMeals >=6 },
+        { id:'perfectHydration', label:'Perfect Hydration', check: s => s.water >= 2500 },
+        { id:'all3Days', label:'Completed All 3 Days', check: s => s.completedMeals >=9 }
+      ];
+
+      // ----- STATE -----
+      let state = {
+        completedMeals: new Array(mealPlan.length).fill(false),
+        water: 0,
+        walking: 0,
+        dark: false,
+        achievements: {}
+      };
+
+      // load from localStorage
+      function loadState() {
+        try {
+          const raw = localStorage.getItem('retentionState');
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            state.completedMeals = parsed.completedMeals || state.completedMeals;
+            state.water = parsed.water ?? 0;
+            state.walking = parsed.walking ?? 0;
+            state.dark = parsed.dark ?? false;
+            state.achievements = parsed.achievements || {};
+          }
+        } catch(e) {}
+      }
+      function saveState() {
+        localStorage.setItem('retentionState', JSON.stringify(state));
+      }
+      loadState();
+
+      // ----- DOM refs -----
+      const $ = s => document.querySelector(s);
+      const $$ = s => document.querySelectorAll(s);
+      const mealContainer = $('#mealContainer');
+      const currentDaySpan = $('#currentDay');
+      const completionPercent = $('#completionPercent');
+      const waterDisplay = $('#waterDisplay');
+      const walkDisplay = $('#walkDisplay');
+      const progressCircle = $('#progressCircle');
+      const progressLabel = $('#progressLabel');
+      const mealCount = $('#mealCount');
+      const bottleFill = $('#bottleFill');
+      const waterStatus = $('#waterStatus');
+      const walkFill = $('#walkFill');
+      const walkStatus = $('#walkStatus');
+      const dailyTip = $('#dailyTip');
+      const statMeals = $('#statMeals');
+      const statWater = $('#statWater');
+      const statWalk = $('#statWalk');
+      const statStreak = $('#statStreak');
+      const achievementList = $('#achievementList');
+      const toastContainer = $('#toastContainer');
+      const darkToggle = $('#darkToggle');
+      const resetProgress = $('#resetProgress');
+      const exportBtn = $('#exportData');
+      const importBtn = $('#importData');
+      const avoidList = $('#avoidList');
+      const recommendList = $('#recommendList');
+
+      // ----- helpers -----
+      function getCompletedCount() { return state.completedMeals.filter(Boolean).length; }
+      function getDay() {
+        const c = getCompletedCount();
+        if (c >= 9) return 3;
+        if (c >= 6) return 3;
+        if (c >= 3) return 2;
+        return 1;
+      }
+      function updateUI() {
+        const done = getCompletedCount();
+        const total = mealPlan.length;
+        const pct = Math.round((done/total)*100);
+        currentDaySpan.textContent = getDay();
+        completionPercent.textContent = pct;
+        waterDisplay.textContent = state.water;
+        walkDisplay.textContent = state.walking;
+        mealCount.textContent = `${done}/${total}`;
+        progressLabel.textContent = pct+'%';
+        const circumference = 263.89;
+        progressCircle.style.strokeDashoffset = circumference - (pct/100)*circumference;
+
+        // water
+        const waterPct = Math.min(100, (state.water/2500)*100);
+        bottleFill.style.height = waterPct+'%';
+        waterStatus.textContent = state.water+' ml';
+
+        // walk
+        const walkPct = Math.min(100, (state.walking/30)*100);
+        walkFill.style.width = walkPct+'%';
+        walkStatus.textContent = state.walking+' min';
+
+        // stats
+        statMeals.textContent = done;
+        statWater.textContent = Math.min(100, Math.round((state.water/2500)*100));
+        statWalk.textContent = Math.min(100, Math.round((state.walking/30)*100));
+        statStreak.textContent = done >= 3 ? '🔥' : '0';
+
+        // achievements
+        updateAchievements();
+
+        // daily tip (based on day)
+        const tipIdx = (getDay()-1) % tips.length;
+        dailyTip.textContent = '✨ '+tips[tipIdx];
+
+        // render meals
+        renderMeals();
+
+        // dark mode
+        document.body.classList.toggle('dark', state.dark);
+        darkToggle.textContent = state.dark ? '☀️ Light' : '🌙 Dark';
+        saveState();
+      }
+
+      function renderMeals() {
+        let html = '';
+        mealPlan.forEach((m, idx) => {
+          const done = state.completedMeals[idx];
+          const dayLabel = `Day ${m.day}`;
+          const items = m.items.map(i => `<span class="food-tag">${i}</span>`).join('');
+          html += `
+            <div class="meal-card ${done?'done':''} fade-in" style="animation-delay:${idx*0.03}s" data-idx="${idx}">
+              <div>
+                <span class="meal-badge">${dayLabel}</span>
+                <span class="meal-name" style="font-weight:600;display:block;">${m.meal}</span>
+                <div style="margin-top:4px;">${items}</div>
+              </div>
+              <div>
+                <button class="small ${done?'outline':'primary'}" data-toggle="${idx}">${done?'✅ Done':'✔ Done'}</button>
+              </div>
+            </div>
+          `;
+        });
+        mealContainer.innerHTML = html;
+        // attach events
+        $$('[data-toggle]').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            const idx = parseInt(this.dataset.toggle);
+            toggleMeal(idx);
+          });
+        });
+      }
+
+      function toggleMeal(idx) {
+        if (state.completedMeals[idx]) {
+          // uncheck not allowed? we allow
+          state.completedMeals[idx] = !state.completedMeals[idx];
+        } else {
+          state.completedMeals[idx] = true;
+          showToast('✅ Meal completed!');
+          checkAchievements();
+          if (getCompletedCount() === 9) showToast('🎉 All 3 days completed!');
+          else if (getCompletedCount() === 6) showToast('🌟 Finished Day 3!');
+          else if (getCompletedCount() === 3) showToast('🌟 Finished Day 2!');
+          // confetti simple
+          if (getCompletedCount() % 3 === 0) simpleConfetti();
+        }
+        updateUI();
+        saveState();
+      }
+
+      function checkAchievements() {
+        const done = getCompletedCount();
+        achievementsDef.forEach(a => {
+          if (!state.achievements[a.id] && a.check(state)) {
+            state.achievements[a.id] = true;
+            showToast('🏆 '+a.label+' unlocked!');
+          }
+        });
+        saveState();
+      }
+
+      function updateAchievements() {
+        let html = '';
+        achievementsDef.forEach(a => {
+          const unlocked = state.achievements[a.id] || false;
+          html += `<span class="badge ${unlocked?'unlocked':''}">${unlocked?'✅':''} ${a.label}</span>`;
+        });
+        achievementList.innerHTML = html;
+      }
+
+      // ----- water / walk -----
+      function addWater(ml) {
+        state.water = Math.min(2500, state.water + ml);
+        if (state.water >= 2500) showToast('💧 Perfect Hydration!');
+        updateUI(); saveState();
+      }
+      function addWalk(min) {
+        state.walking = Math.min(30, state.walking + min);
+        if (state.walking >= 30) showToast('🚶 Walking goal reached!');
+        updateUI(); saveState();
+      }
+
+      // ----- toast -----
+      function showToast(msg) {
+        const t = document.createElement('div');
+        t.className = 'toast';
+        t.textContent = msg;
+        toastContainer.appendChild(t);
+        setTimeout(() => { t.remove(); }, 3000);
+      }
+
+      // ----- confetti (simple) -----
+      function simpleConfetti() {
+        for (let i=0;i<40;i++) {
+          const el = document.createElement('div');
+          el.style.cssText = `position:fixed;left:${Math.random()*100}vw;top:-10px;width:8px;height:8px;background:${['#4CAF50','#2196F3','#FF9800','#F44336'][Math.floor(Math.random()*4)]};border-radius:50%;pointer-events:none;z-index:999;transition: transform 2s ease, opacity 2s ease;`;
+          document.body.appendChild(el);
+          requestAnimationFrame(() => {
+            el.style.transform = `translateY(${window.innerHeight+50}px) rotate(${Math.random()*360}deg)`;
+            el.style.opacity = '0';
+          });
+          setTimeout(() => el.remove(), 2200);
+        }
+      }
+
+      // ----- reset / export / import -----
+      function resetAll() {
+        if (confirm('Reset all progress?')) {
+          state.completedMeals = new Array(mealPlan.length).fill(false);
+          state.water = 0;
+          state.walking = 0;
+          state.achievements = {};
+          updateUI(); saveState();
+          showToast('🔄 Progress reset');
+        }
+      }
+
+      function exportData() {
+        const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'retentionProgress.json';
+        a.click();
+        showToast('📥 Exported');
+      }
+
+      function importData() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = e => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            try {
+              const data = JSON.parse(ev.target.result);
+              if (data.completedMeals && data.water !== undefined && data.walking !== undefined) {
+                state.completedMeals = data.completedMeals;
+                state.water = data.water;
+                state.walking = data.walking;
+                state.achievements = data.achievements || {};
+                updateUI(); saveState();
+                showToast('📤 Imported successfully');
+              } else showToast('❌ Invalid file');
+            } catch(err) { showToast('❌ Error'); }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      }
+
+      // ----- event binding -----
+      function init() {
+        // water buttons
+        document.querySelectorAll('[data-water]').forEach(btn => {
+          btn.addEventListener('click', function() { addWater(parseInt(this.dataset.water)); });
+        });
+        document.querySelectorAll('[data-walk]').forEach(btn => {
+          btn.addEventListener('click', function() { addWalk(parseInt(this.dataset.walk)); });
+        });
+        $('#resetWater').addEventListener('click', function() { state.water = 0; updateUI(); saveState(); showToast('💧 Water reset'); });
+        $('#resetWalk').addEventListener('click', function() { state.walking = 0; updateUI(); saveState(); showToast('🚶 Walking reset'); });
+
+        darkToggle.addEventListener('click', function() {
+          state.dark = !state.dark;
+          updateUI(); saveState();
+        });
+        resetProgress.addEventListener('click', resetAll);
+        exportBtn.addEventListener('click', exportData);
+        importBtn.addEventListener('click', importData);
+
+        // bottom nav
+        $$('.nav-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const section = this.dataset.section;
+            if (section === 'top') { window.scrollTo({top:0,behavior:'smooth'}); return; }
+            const target = document.getElementById(section);
+            if (target) target.scrollIntoView({behavior:'smooth'});
+            $$('.nav-item').forEach(n => n.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+        $('#scrollTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+        // initial render
+        updateUI();
+        // fill avoid/recommend
+        avoid.forEach(a => { const el = document.createElement('span'); el.className='food-tag red'; el.textContent=a; avoidList.appendChild(el); });
+        recommend.forEach(r => { const el = document.createElement('span'); el.className='food-tag green'; el.textContent=r; recommendList.appendChild(el); });
+
+        // keyboard shortcut
+        document.addEventListener('keydown', e => { if (e.key === 'd' || e.key === 'D') { darkToggle.click(); } });
+      }
+
+      // run
+      init();
+    })();
+  </script>
+</body>
+</html>
